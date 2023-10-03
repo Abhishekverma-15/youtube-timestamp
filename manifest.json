@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Utube Bookmarks",
+  "version": "0.1.0",
+  "description": "To bookmark timestamps of youtube videos",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["https://*.youtube.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.youtube.com/*"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/bookmark.png",
+        "assets/play.png",
+        "assets/delete.png",
+        "assets/save.png"
+      ],
+      "matches": ["https://*.youtube.com/*"]
+    }
+  ],
+  "icons":{
+    "128":"assets/ext-icon.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "assets/ext-icon.png",
+      "24": "assets/ext-icon.png",
+      "32": "assets/ext-icon.png"
+    },
+    "default_title": "youtube timestamps bookmark",
+    "default_popup": "popup.html"
+  }
+  
+}
